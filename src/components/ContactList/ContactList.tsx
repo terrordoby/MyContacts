@@ -8,6 +8,8 @@ interface ContactListProps {
   contacts: ContactsResponse[]
   onHandleToggleOrderBy: () => void
   orderBy: string
+  onLoadContacts: () => Promise<void>
+  isError: boolean;
 }
 
 const ContactList = (props: ContactListProps) => {
@@ -15,13 +17,13 @@ const ContactList = (props: ContactListProps) => {
     <Container >
       <Header orderBy={props.orderBy}>
         {props.contacts.length > 0 && (
-          <button onClick={props.onHandleToggleOrderBy}>
+          <button className="toggleOrderBy" onClick={props.onHandleToggleOrderBy}>
             <strong>Nome</strong>
             <img src={Arrow} alt="Flecha" />
           </button>
         )}
       </Header>
-      <ContactItem contacts={props.contacts} />
+      <ContactItem isError={props.isError} onLoadContacts={props.onLoadContacts} contacts={props.contacts} />
     </Container>
   );
 };

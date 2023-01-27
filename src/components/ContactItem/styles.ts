@@ -47,3 +47,42 @@ a {
   margin: 0;
 }
 `;
+
+export const ContainerNoContacts = styled.div`
+
+  display: flex;
+  gap: 2.4rem;
+  margin-top: 1.6rem;
+
+  .nocontacts-details {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+
+    span {
+      display: block;
+      font-size: 2.2rem;
+      color: #fc5050;
+      font-weight: bold;
+    }
+
+    button {
+      background: #5061fc;
+      color: #fff;
+      padding: 1.6rem;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.04);
+      border-radius: 4px;
+      transition: filter 0.2s ease-in;
+      border: none;
+      font-size: 1.6rem;
+      font-weight: bold;
+      max-width: 19rem;
+
+      &:hover {
+        filter: brightness(1.2)
+      }
+    }
+  }
+`;
+

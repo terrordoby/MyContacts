@@ -1,6 +1,6 @@
 import HttpClient from "./utils/HttpClient";
 
-class ContactServices {
+class CategoriesServices {
 
   httpClient: HttpClient;
 
@@ -8,9 +8,9 @@ class ContactServices {
     this.httpClient = new HttpClient("http://localhost:3001");
   }
 
-  async listContacts(params = "asc") {
-    return this.httpClient.get(`/contacts/?orderBy=${params}`);
+  async listCategories() {
+    return this.httpClient.get("/categories");
   }
 }
 
-export default new ContactServices();
+export default new CategoriesServices();

@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 export const Container = styled.form`
 
@@ -26,9 +26,6 @@ gap: 1.6rem;
     cursor: default;
   }
  }
-`;
 
-export const FormGroup = styled.div`
 `;
-
 
