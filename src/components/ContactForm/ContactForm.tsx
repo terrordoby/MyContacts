@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useErrors } from "../../hooks/useErrors";
 import CategoriesServices from "../../services/CategoriesServices";
+import { ContactCreateRequest } from "../../types/ContactResponse";
 import delay from "../../utils/delay";
 import FormGroup from "../FormGroup/FormGroup";
 import Input from "../Ui/Input/Input";
@@ -12,9 +13,14 @@ import {  Container } from "./stryles";
 interface ICategoriesProps {
   id: string;
   name: string;
+
 }
 
-const ContactForm = () => {
+interface IContactForm {
+  onCreateContact?: (body: ContactCreateRequest) => Promise<void>
+}
+
+const ContactForm = (props: IContactForm ) => {
   const [name, setName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [phone, setPhone] = useState<string>("");
@@ -37,12 +43,12 @@ const ContactForm = () => {
 
   const isFormdValid = name && errors.length === 0;
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     const formData = {
-      name, email, phone, categoryId
+      name, email, phone, category_id: categoryId
     };
-    return formData;
+    props.onCreateContact && await props.onCreateContact(formData);
   }
 
   function handleChangeName(e: React.ChangeEvent<HTMLInputElement>) {

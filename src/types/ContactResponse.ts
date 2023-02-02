@@ -8,3 +8,10 @@ export interface ContactsResponse {
   name: string;
   phone: string;
 }
+
+export interface ContactCreateRequest {
+  category_id: string;
+  email: string;
+  name: string;
+  phone: string;
+}
